@@ -171,6 +171,4 @@ class StagePosition:
             return np.sqrt(np.square(self.x - other.x) + 
                        np.square(self.y - other.y) + 
                        np.square(self.z - other.z))
-        else:
-            return "TODO"
     

@@ -1,0 +1,111 @@
+THORLABS NR360S Default Settings:
+
+HS NR360S
+
+General
+
+Name = HS NR360S
+Stage ID = Type_NRS360
+Axis ID = Rotary
+
+Home Settings
+
+HomeDir = MOT_Reverse
+HomeLimitSwitch = MOT_ReverseLimitSwitch
+HomeVel = 6
+HomeZeroOffset = 0.6
+
+Jog Settings
+
+JogMode = MOT_ExtSingleStep
+JogStopMode = MOT_Profiled
+JogStepSize = 0.5
+JogMinVel = 0.0
+JogAccn = 5.0
+JogMaxVel = 10.0
+
+Control Settings
+
+DefMinVel = 0.0
+DefAccn = 25.0
+DefMaxVel = 50.0
+
+Limit Settings
+
+CWHardLimit = MOT_LimitSwitchBreakOnContact
+CCWHardLimit = MOT_LimitSwitchIgnoreSwitch
+CWSoftLimit = 3.0
+CCWSoftLimit = 1.0
+SoftLimitMode = MOT_LimitSwitchIgnored_Rotational
+LimitsSoftwareApproachPolicy = DisallowIllegalMoves
+
+Physical Settings
+
+Pitch = 5.4546
+StepsPerRev = 200
+GearboxRatio = 1
+TST101 Stage ID = 0
+UseDeviceUnits = False
+Units = MOT_Rotational
+DirSense = MOT_Backwards
+MinPos = 0.00
+MaxPos = 360.00
+MaxAccn = 80.0
+MaxVel = 80.0
+Factor = 1.0
+UnitsTxt = °
+DisplayDP = -1
+
+Misc. Settings
+
+BacklashDist = 1.0
+MoveFactor = 30
+RestFactor = 15
+
+Stepper Motor Settings
+
+Pitch = 5.4546
+StepsPerRev = 200
+GearboxRatio = 1
+TST101 Stage ID = 0
+UseDeviceUnits = False
+Units = MOT_Rotational
+DirSense = MOT_Backwards
+MinPos = 0.00
+MaxPos = 360.00
+MaxAccn = 80.0
+MaxVel = 80.0
+Factor = 1.0
+UnitsTxt = °
+DisplayDP = -1
+
+Velocity Profile Settings
+
+BowIndex = 0
+
+Button Settings
+
+ButtonMode = MOT_JogMode
+ButtonPos1 = 1
+ButtonPos2 = 5
+
+Joystick Settings
+
+DirectionSense = MOT_Forwards
+LowGearMaxVel = 2
+LowGearAccn = 2
+HighGearMaxVel = 10
+HighGearAccn = 10
+
+Trigger Settings
+
+TriggerEnable = Disabled
+ActionMode = MoveRelative
+MoveToTarget = 0
+MoveRelativeTarget = 0.1
+
+PID Loop Encoder Settings
+
+PID Loop Encoder Calibration Coeff = 0.0
+
+
