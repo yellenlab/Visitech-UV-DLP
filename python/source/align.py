@@ -42,6 +42,22 @@ def get_rotation_angle(alignment_marks):
             / alignment_marks[1].dist(alignment_marks[0]))
     return np.arcsin(sin)
 
+def find_corners(mmc):
+    ''' Returns a PositonList of three alignment mark locations '''
+
+    pl = pos.PositionList()
+    positions = [(0,0), (CHIP_WIDTH,0), (0,CHIP_HEIGHT)]
+    model = get_inference_model()
+    for posit in positions:
+        pos.set_pos(mmc, x=posit[0]+mmc.getXPosition(), 
+                         y=posit[1]+mmc.getYPosition())
+        center, orig_frame, frame, r = find_alignment_mark(model)
+        move_to_center(mmc, center)
+        s = pos.StagePosition(x=mmc.getXPosition(),
+                              y=mmc.getYPosition())
+        pl.append(s)
+    return pl
+
 def get_inference_model():
     ''' Loads weights and returns an inference model '''
     inference_config = mark_dataset.InferenceConfig()
@@ -100,6 +116,7 @@ def move_to_center(mmc, center):
     new_y = curry-y_change
     
     pos.set_pos(mmc, x=new_x, y=new_y)
+
 
 class Error(Exception):
     """Base class for exceptions in alignment."""

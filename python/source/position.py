@@ -109,6 +109,37 @@ def load(filename, path):
                                     z=val['z'], theta=val['theta']))
     return PositionList(positions=sp)
 
+def current(mmc):
+    ''' Gets the current stage position 
+    
+    arg:
+        mmc: Micromanager instance
+    returns:
+        (x_pos, y_pos, z_pos)
+    '''
+    return (mmc.getXPosition(), 
+            mmc.getYPosition(),
+            mmc.getPosition())
+
+def set_pos(mmc, x=None, y=None, z=None):
+    ''' Sets a microscope position
+    args:
+        - mmc instance
+        - x (float)
+        - y (float)
+        - z (float) (default is None - keeps previous foucs)
+    '''
+    if z is not None:
+        if x is None and y is None:
+            mmc.setPosition(z)
+            mmc.waitForSystem()
+        else:
+            mmc.setXYPosition(x,y)
+            mmc.setPosition(z)
+            mmc.waitForSystem()
+    else:
+        mmc.setXYPosition(x,y)
+        mmc.waitForSystem()
 
 class StagePosition:
     ''' Stores the data of one instantanious stage position 

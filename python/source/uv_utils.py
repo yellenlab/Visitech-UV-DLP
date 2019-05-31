@@ -1,5 +1,5 @@
 
-from PIL import Image
+#from PIL import Image
 import numpy as np
 
 try:
@@ -41,11 +41,12 @@ def get_frame(cam):
 def get_mmc(cfg="../../config/scope_stage.cfg"):
     mmc = MMCorePy.CMMCore()
     mmc.loadSystemConfiguration(cfg)
-    mmc.setFocusDevice('FocusDrive')
+    #mmc.setFocusDevice('FocusDrive')
     return mmc
 
 def start_nr360s():
-    motorNo = apt.list_available_devices()[0][1]
+    print (apt.list_available_devices())
+    motorNo = apt.list_available_devices()[2][1]
     motor = apt.Motor(motorNo)
     # Set the Hardware Limit Switches 
     #   - Limit switch is activated when electrical
@@ -100,4 +101,4 @@ def bmp_from_poslist(positions, name, path,
 
     im = Image.fromarray(bmp)
     im = im.convert('1')
-    im.save("your_file.bmp")
+    im.save(path+'/'+name+'.bmp')
