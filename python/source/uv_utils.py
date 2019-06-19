@@ -44,10 +44,8 @@ def get_mmc(cfg="../../config/scope_stage.cfg"):
     #mmc.setFocusDevice('FocusDrive')
     return mmc
 
-def start_nr360s():
-    print (apt.list_available_devices())
-    motorNo = apt.list_available_devices()[2][1]
-    motor = apt.Motor(motorNo)
+def start_nr360s(motornumber=90917763):
+    motor = apt.Motor(motornumber)
     # Set the Hardware Limit Switches 
     #   - Limit switch is activated when electrical
     #     continuity is broken in the reverse direction 
@@ -73,6 +71,36 @@ def start_nr360s():
     motor.set_velocity_parameters(min_vel=0.0,
                                 accn=2.7,
                                 max_vel=5.4545)
+
+    return motor
+
+def start_mlj150(motornumber=49914180):
+    motor = apt.Motor(motornumber)
+    # Set the Hardware Limit Switches 
+    #   - Limit switch is activated when electrical
+    #     continuity is broken in the reverse direction 
+    #     in both directions
+    motor.set_hardware_limit_switches(rev=3, fwd=3)
+    motor.set_motor_parameters(steps_per_rev=200,
+                                gear_box_ratio=3)
+    # Set Stage Info
+    #   - Min and Max pos limited to 0 and 360 degrees
+    #   - units = mm
+    #   - pitch = 1 (from device manual)
+    motor.set_stage_axis_info(min_pos=0.0,
+                            max_pos=50.0,
+                            units=1,
+                            pitch=1)
+    # Set Homing Parameters
+    #   - Homing direction is reverse
+    #   - Limit Switch is reverse
+    motor.set_move_home_parameters(direction=2,
+                                lim_switch=1,
+                                velocity=5,
+                                zero_offset=0.1)
+    motor.set_velocity_parameters(min_vel=0.0,
+                                accn=5,
+                                max_vel=5)
 
     return motor
 
