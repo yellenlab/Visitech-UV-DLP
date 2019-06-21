@@ -1,5 +1,5 @@
 
-#from PIL import Image
+from PIL import Image
 import numpy as np
 
 try:
@@ -32,7 +32,7 @@ def close_cam(cam):
     cam.DeInit()
     del cam
 
-def get_frame(cam):
+def get_frame():
     cam = start_cam()
     frame = cam.GetNextImage().GetNDArray()
     close_cam(cam)

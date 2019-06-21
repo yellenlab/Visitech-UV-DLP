@@ -18,7 +18,7 @@ class VisitechDLP:
         elem.send_keys("4k6VT")
         elem.send_keys(Keys.RETURN)
 
-    def load_image(image_path, inum_location='0'):
+    def load_image(self, image_path, inum_location='0'):
         page_link = self.driver.find_element_by_link_text('Load Image')
         page_link.click()
         inum = self.driver.find_element_by_name('inum')
@@ -30,7 +30,7 @@ class VisitechDLP:
                             "//input[@value='Upload File']")
         set_im.click()
 
-    def load_sequence(seq_path):
+    def load_sequence(self, seq_path):
         page_link = self.driver.find_element_by_link_text('Sequence Control')
         page_link.click()
         path = self.driver.find_element_by_name('seqfile')

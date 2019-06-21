@@ -115,11 +115,10 @@ def current(mmc):
     arg:
         mmc: Micromanager instance
     returns:
-        (x_pos, y_pos, z_pos)
+        (x_pos, y_pos)
     '''
     return (mmc.getXPosition(), 
-            mmc.getYPosition(),
-            mmc.getPosition())
+            mmc.getYPosition())
 
 def set_pos(mmc, x=None, y=None, z=None):
     ''' Sets a microscope position
